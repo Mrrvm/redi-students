@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 
-const ProductSection = () => {
+const ProductSection = ({ addProduct }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -27,13 +27,15 @@ const ProductSection = () => {
       </div>
 
       <ul className="products--list">
-        {products.map((p) => (
-          <li style={{ display: "flex", flexDirection: "column" }}>
+        {products.map((p, index) => (
+          <li key={index} style={{ display: "flex", flexDirection: "column" }}>
             <img src={p.image} alt={p.name} className="product--image" />
             <div className="product--text">
               <h1 className="product--name">{p.title}</h1>
               <p className="product--description">{p.description}</p>
-              <button onClick={() => {}} className="product--buy">Buy Now</button>
+              <button onClick={() => addProduct(p)} className="product--buy">
+                Buy Now
+              </button>
               <p className="product--price">{p.price} euros</p>
             </div>
           </li>

@@ -1,10 +1,10 @@
-const Cart = ({ products }) => {
+const Cart = ({ selectedProducts }) => {
   return (
-    <div>
+    <div style={{ color: "black" }}>
       <span>&times;</span>
       <h1>Cart</h1>
       <p>...</p>
-      {products.map((p) => {
+      {selectedProducts.map((p) => {
         return <div>{p.title}</div>;
       })}
     </div>

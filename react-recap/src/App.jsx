@@ -8,12 +8,17 @@ import ProductSection from "./components/ProductSection";
 function App() {
   const [openCart, setOpenCart] = useState(false);
   const [selectedProducts, setSelectedProducts] = useState([]);
+
+  const addProduct = (product) => {
+    setSelectedProducts([product, ...selectedProducts]);
+  };
+
   return (
     <>
+      {openCart && <Cart selectedProducts={selectedProducts} />}
       <Header setOpenCartFromHeader={() => setOpenCart(!openCart)} />
       <HeroSection />
-      <ProductSection />
-      {openCart && <Cart selectedProducts={selectedProducts} />}
+      <ProductSection addProduct={addProduct} />
     </>
   );
 }
